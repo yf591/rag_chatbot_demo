@@ -248,3 +248,7 @@ docker-compose.override.yml
 *.bak
 *.backup
 *.old
+
+#powerpoint
+# Microsoft PowerPoint files
+*.pptx
