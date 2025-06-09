@@ -1,0 +1,15 @@
+streamlit
+transformers>=4.36.0
+torch>=2.0.0
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-huggingface>=0.1.0
+faiss-cpu
+sentence-transformers>=2.2.0
+PyMuPDF
+accelerate>=0.20.0
+bitsandbytes>=0.41.0
+huggingface_hub>=0.16.0
+python-dotenv
+pyngrok
+toml
