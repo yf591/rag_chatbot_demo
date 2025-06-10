@@ -392,7 +392,7 @@ rag_chatbot_demo/
 - **URL**: https://www.city.fukuyama.hiroshima.jp/
 
 ### 収集済みPDFファイル
-すべてのPDFファイルは福山市公式サイトからの正確な情報です：
+すべてのPDFファイルは福山市公式サイトからの正確な情報です。
 - 総合計画・行政文書関連: 3ファイル（約17MB）
 - 観光・移住定住関連: 1ファイル（約36MB）
 
@@ -400,7 +400,7 @@ rag_chatbot_demo/
 
 - **Python**: 3.11+
 - **OS**: Windows 11, Ubuntu 22.04
-- **主要ライブラリ**:
+- **主要ライブラリ**
   - Streamlit 1.45.1
   - FAISS 1.11.0
   - LangChain 0.3.25
