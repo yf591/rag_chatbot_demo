@@ -47,7 +47,7 @@ def main():
         - 福山市観光パンフレット
         
         **使用モデル:**
-        - LLM: llm-jp-3-13b-it-1
+        - LLM: tokyotech-llm/Llama-3.1-Swallow-8B-Instruct-v0.1
         - 埋め込み: all-MiniLM-L6-v2
         """)
         

@@ -10,7 +10,8 @@ class RAGSystem:
     def __init__(self, vector_store_path: str = "./vector_store", hf_token: Optional[str] = None):
         self.vector_store_path = vector_store_path
         self.hf_token = hf_token
-        self.model_name = "yf591/llm-jp-3-13b-it-1"
+        # デフォルトのLLMモデルをHugging Faceの公開モデルに変更
+        self.model_name = "tokyotech-llm/Llama-3.1-Swallow-8B-Instruct-v0.1"
         
         # 埋め込みモデルを初期化（GPUが利用可能な場合はGPU使用）
         device = "cuda" if torch.cuda.is_available() else "cpu"
