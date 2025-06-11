@@ -22,7 +22,7 @@ RAG（Retrieval-Augmented Generation）を使用したチャットボットと�
 - **埋め込みモデル**: sentence-transformers/all-MiniLM-L6-v2
 - **PDF処理**: PyMuPDF (fitz)
 - **テキスト分割**: LangChain RecursiveCharacterTextSplitter
-- **LLMモデル**: yf591/llm-jp-3-13b-it-1（オプション）
+ - **LLMモデル**: tokyotech-llm/Llama-3.1-Swallow-8B-Instruct-v0.1（オプション）
 
 ### 📚 ライブラリの役割と技術選定理由
 
@@ -107,7 +107,7 @@ graph TB
     M --> N{回答生成方式}
     N -->|シンプル版| O[テンプレート回答]
     N -->|LLM版| P[transformers + torch]
-    P --> Q[llm-jp-3-13b-it-1]
+    P --> Q[Llama-3.1-Swallow-8B-Instruct]
     Q --> R[AI生成回答]
     
     O --> S[Streamlit UI]
@@ -364,10 +364,10 @@ rag_chatbot_demo/
 
 ## 🔧 LLMモデル情報（app.py使用時）
 
-- **モデル名**: yf591/llm-jp-3-13b-it-1
-- **ベースモデル**: llm-jp/llm-jp-3-13b
-- **ライセンス**: CC-BY-NC-SA
-- **特徴**: Unslothで高速化されたファインチューニング済みモデル
+- **モデル名**: tokyotech-llm/Llama-3.1-Swallow-8B-Instruct-v0.1
+- **ベースモデル**: Meta Llama 3.1 8B
+- **ライセンス**: Llama 3 Community License
+- **特徴**: 日本語指示データでファインチューニングされたモデル
 - **量子化**: 4bit量子化（QLoRA）対応
 
 ### プロンプト形式
