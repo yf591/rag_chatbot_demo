@@ -135,8 +135,8 @@ graph TB
 
 ### 1. リポジトリのクローン
 ```bash
-git clone https://github.com/yf591/rag-chatbot-demo.git
-cd rag-chatbot-demo
+git clone https://github.com/yf591/rag_chatbot_demo.git
+cd rag_chatbot_demo
 ```
 
 ### 2. 仮想環境の構築と有効化
@@ -213,8 +213,8 @@ streamlit run app_simple.py
 ```python
 # 1. Google Colab ProでGPU有効化（T4/L4/A100推奨）
 # 2. リポジトリクローン
-!git clone https://github.com/yf591/rag-chatbot-demo.git
-%cd rag-chatbot-demo
+!git clone https://github.com/yf591/rag_chatbot_demo.git
+%cd rag_chatbot_demo
 
 # 3. rag_chatbot_demo.ipynb を開いて順次実行
 # - GPU環境確認
