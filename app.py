@@ -47,7 +47,7 @@ def initialize_rag_system():
     return True
 
 def main():
-    st.title("🏛️ 福山市RAGチャットボット")
+    st.title("🏛️ 福山市RAGチャットボット（GPU用デモ版）")
     st.markdown("福山市の公式資料に基づいて質問にお答えします。")
     
     # GPU情報表示

@@ -28,7 +28,7 @@ def initialize_rag_system():
     return True
 
 def main():
-    st.title("🏛️ 福山市RAGチャットボット（デモ版）")
+    st.title("🏛️ 福山市RAGチャットボット（CPU用デモ版）")
     st.markdown("福山市の公式資料に基づいて質問にお答えします。")
     
     # サイドバー
