@@ -4,7 +4,7 @@ from rag_system_simple import RAGSystemSimple
 
 # Streamlitページ設定
 st.set_page_config(
-    page_title="福山市RAGチャットボット（デモ版）",
+    page_title="福山市RAGチャットボット（CPU用デモ版）",
     page_icon="🏛️",
     layout="wide"
 )
@@ -36,14 +36,15 @@ def main():
         st.header("📋 システム情報")
         st.markdown("""
         **利用可能な資料:**
-        - 第四次福山市総合計画
-        - 福山みらい創造ビジョン
-        - 福山市観光パンフレット
+        - 第四次福山市総合計画前期基本計画（表紙・序論）
+        - 第四次福山市総合計画前期基本計画（基本構想）
+        - 福山みらい創造ビジョン（案）
+        - 福山市観光パンフレット「えっと福山」
         
         **使用技術:**
         - 埋め込み: all-MiniLM-L6-v2
         - ベクトルDB: FAISS
-        - 文書数: 84件
+        - 文書数: 66件
         """)
         
         if st.button("🔄 システム再初期化"):

@@ -4,7 +4,7 @@ from rag_system import RAGSystem
 
 # Streamlitページ設定
 st.set_page_config(
-    page_title="福山市RAGチャットボット",
+    page_title="福山市RAGチャットボット（GPU用デモ版）",
     page_icon="🏛️",
     layout="wide"
 )
@@ -36,15 +36,15 @@ def initialize_rag_system():
 def main():
     st.title("🏛️ 福山市RAGチャットボット")
     st.markdown("福山市の公式資料に基づいて質問にお答えします。")
-    
-    # サイドバー
+      # サイドバー
     with st.sidebar:
         st.header("📋 システム情報")
         st.markdown("""
         **利用可能な資料:**
-        - 第四次福山市総合計画
-        - 福山みらい創造ビジョン
-        - 福山市観光パンフレット
+        - 第四次福山市総合計画前期基本計画（表紙・序論）
+        - 第四次福山市総合計画前期基本計画（基本構想）
+        - 福山みらい創造ビジョン（案）
+        - 福山市観光パンフレット「えっと福山」
         
         **使用モデル:**
         - LLM: tokyotech-llm/Llama-3.1-Swallow-8B-Instruct-v0.1

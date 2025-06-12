@@ -56,15 +56,15 @@ def main():
         st.sidebar.success(f"🚀 {gpu_info}")
     else:
         st.sidebar.warning("⚠️ CPUモードで実行中")
-    
-    # サイドバー
+      # サイドバー
     with st.sidebar:
         st.header("📋 システム情報")
         st.markdown("""
         **利用可能な資料:**
-        - 第四次福山市総合計画
-        - 福山みらい創造ビジョン
-        - 福山市観光パンフレット
+        - 第四次福山市総合計画前期基本計画（表紙・序論）
+        - 第四次福山市総合計画前期基本計画（基本構想）
+        - 福山みらい創造ビジョン（案）
+        - 福山市観光パンフレット「えっと福山」
         
         **使用モデル:**
         - LLM: tokyotech-llm/Llama-3.1-Swallow-8B-Instruct-v0.1
