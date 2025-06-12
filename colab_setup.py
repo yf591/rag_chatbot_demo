@@ -82,8 +82,23 @@ token = "{os.getenv('NGROK_TOKEN', '')}"
     print()
 
 def install_dependencies():
-    """依存関係をインストール"""
+    """Google Colab最適化された依存関係をインストール"""
     print("=== 依存関係インストール ===")
+    
+    # Google Colab特有のFAISS問題対策
+    print("🔧 Google Colab特有のFAISS問題対策...")
+    try:
+        # faiss-gpuがインストールされている場合は削除
+        subprocess.run([sys.executable, "-m", "pip", "uninstall", "faiss-gpu", "-y"], 
+                      capture_output=True)
+        # faiss-cpuをインストール（Google Colabで動作）
+        subprocess.run([sys.executable, "-m", "pip", "install", "faiss-cpu"], 
+                      check=True, capture_output=True, text=True)
+        print("✅ FAISS問題対策完了")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️ FAISS設定警告: {e}")
+    
+    # 通常の依存関係インストール
     try:
         subprocess.run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"], 
                       check=True, capture_output=True, text=True)
@@ -92,6 +107,49 @@ def install_dependencies():
         print(f"❌ インストールエラー: {e}")
         print(f"出力: {e.stdout}")
         print(f"エラー: {e.stderr}")
+    print()
+
+def create_vector_store():
+    """ベクトルストアの確認・作成"""
+    print("=== ベクトルストア確認・作成 ===")
+    
+    vector_store_path = Path("vector_store")
+    faiss_file = vector_store_path / "index.faiss"
+    documents_file = vector_store_path / "documents.pkl"
+    
+    if faiss_file.exists() and documents_file.exists():
+        print("✅ ベクトルストア: 既存データ使用")
+        return True
+    
+    print("🔧 ベクトルストアを作成中...")
+    try:
+        # PDFファイルの確認
+        pdf_files = list(Path(".").glob("**/*.pdf"))
+        if not pdf_files:
+            print("⚠️ PDFファイルが見つかりません")
+            print("📁 sample_documents/フォルダにPDFファイルを配置してください")
+            return False
+        
+        print(f"📄 PDFファイル発見: {len(pdf_files)}個")
+        
+        # pdf_processor_light.pyを使用してベクトルストア作成
+        if Path("pdf_processor_light.py").exists():
+            result = subprocess.run([sys.executable, "pdf_processor_light.py"], 
+                                  capture_output=True, text=True)
+            if result.returncode == 0:
+                print("✅ ベクトルストア作成完了")
+                return True
+            else:
+                print(f"❌ ベクトルストア作成エラー: {result.stderr}")
+                return False
+        else:
+            print("❌ pdf_processor_light.py が見つかりません")
+            return False
+            
+    except Exception as e:
+        print(f"❌ ベクトルストア作成中にエラー: {e}")
+        return False
+    
     print()
 
 def verify_model_access():
@@ -121,15 +179,30 @@ def main():
     check_files()
     setup_streamlit_secrets()
     install_dependencies()
+    
+    # ベクトルストア確認・作成
+    vector_store_created = create_vector_store()
+    if not vector_store_created:
+        print("⚠️ ベクトルストア作成に失敗しました")
+        print("📝 手動でPDFファイルを配置後、再実行してください")
+    
     verify_model_access()
     
     print("=" * 50)
-    print("✅ セットアップ完了!")
-    print()
-    print("次のステップ:")
-    print("1. 'streamlit run app.py' を実行")
-    print("2. ngrokでトンネルを作成")
-    print("3. 公開URLにアクセス")
+    if vector_store_created:
+        print("✅ セットアップ完了!")
+        print()
+        print("次のステップ:")
+        print("1. 'streamlit run app.py' を実行")
+        print("2. ngrokでトンネルを作成")
+        print("3. 公開URLにアクセス")
+    else:
+        print("⚠️ セットアップ部分完了（ベクトルストア要作成）")
+        print()
+        print("次のステップ:")
+        print("1. sample_documents/フォルダにPDFファイルを配置")
+        print("2. 'python pdf_processor_light.py' を実行")
+        print("3. 'streamlit run app.py' を実行")
 
 if __name__ == "__main__":
     main()
