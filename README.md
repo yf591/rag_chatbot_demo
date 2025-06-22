@@ -167,6 +167,11 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+"pip install -r requirements.txt" の実行でエラーが出る場合は、以下のコマンドで依存関係をインストールしてください。
+```bash
+pip install -r requirements_colab.txt
+```
+
 ### 4. HuggingFaceトークンの設定（LLM版使用時）
 ```bash
 # .env_templateを.envにコピーして、トークンを設定
