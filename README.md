@@ -14,6 +14,8 @@ RAG（Retrieval-Augmented Generation）を使用したチャットボットと�
 - **📝 チャット履歴**: 過去の質問と回答の履歴管理
 - **🎨 直感的UI**: Streamlitによる使いやすいWebインターフェース
 
+![top page](./docs/asset/toppage.jpeg)
+
 ## 🛠️ 技術仕様
 
 ### 使用技術
